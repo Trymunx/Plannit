@@ -1,4 +1,4 @@
-# plannit
+# Plannit
 
 > Planner and to do list
 
