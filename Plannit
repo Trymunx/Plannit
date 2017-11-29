@@ -1,0 +1,9 @@
+Features:
+  Calendar
+  Add events to calendar based on time or just day you would like to do them
+  Shuffle event order on different days by dragging events
+  Have events that are not day specific
+  Have a schedule viewer to see to dos for today / anything marked as "needs doing" / missed to dos
+  In this daily tasks view also include things that you would LIKE to do each day, if possible
+  Dismiss functionality, especially if implementing push notifications
+  Push notifications for to dos
