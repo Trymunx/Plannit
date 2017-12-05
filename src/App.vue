@@ -6,10 +6,10 @@
 </template>
 
 <script>
-import TodoList from './components/TodoList'
+import TodoList from "./components/TodoList";
 
 export default {
-  name: 'app',
+  name: "app",
   components: {
     TodoList
   },
@@ -37,19 +37,22 @@ export default {
           done: false
         }
       ]
-    }
+    };
   }
-}
+};
 </script>
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
   background-color: #c8c8c8;
-  margin-top: 60px;
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  align-self: center;
 }
 </style>
