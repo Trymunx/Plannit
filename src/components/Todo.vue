@@ -1,5 +1,6 @@
 <template>
   <div class="todo">
+    <input type="checkbox" v-model="todo.done">
     {{todo.title}}
   </div>
 </template>
@@ -16,5 +17,6 @@ export default {
   margin: 5px;
   border-radius: 2px;
   background-color: #dfdfdf;
+  width: 200px;
 }
 </style>
