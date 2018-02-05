@@ -7,3 +7,4 @@ Features:
   In this daily tasks view also include things that you would LIKE todo each day, if possible
   Dismiss functionality, especially if implementing push notifications
   Push notifications for todos
+  Device sniffer, so can set tasks only for desktop/mobile/specific devices. Could just be a popup on startup for now
