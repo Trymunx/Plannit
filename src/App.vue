@@ -1,6 +1,8 @@
 <template>
   <div id="app">
     <img src="./assets/Plannit.png">
+    <div>Todo list</div>
+    <div>Calendar</div>
     <todo-list v-bind:todos="todos"></todo-list>
   </div>
 </template>
@@ -18,22 +20,18 @@ export default {
       todos: [
         {
           title: "Todo A",
-          project: "Project A",
           done: false
         },
         {
           title: "Todo B",
-          project: "Project B",
           done: false
         },
         {
           title: "Todo C",
-          project: "Project C",
           done: false
         },
         {
           title: "Todo D",
-          project: "Project D",
           done: false
         }
       ]

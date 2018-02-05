@@ -1,14 +1,11 @@
 <template>
-  <div>
-    <p>Completed Tasks: {{todos.filter(todo => {return todo.done === true}).length}}</p>
-    <p>Pending Tasks: {{todos.filter(todo => {return todo.done === false}).length}}</p>
-    <todo  v-for="todo in todos" v-bind:todo="todo"></todo>
+  <div id="todo-list">
+   {{ todo.title }}
   </div>
 </template>
 
 <script type="text/javascript">
-
-import Todo from './Todo'
+import Todo from "./Todo";
 
 export default {
   props: ["todos"],
@@ -16,8 +13,8 @@ export default {
     Todo
   }
 };
-
 </script>
 
 <style>
+
 </style>
