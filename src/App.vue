@@ -1,8 +1,6 @@
 <template>
   <div id="app">
     <img src="./assets/Plannit.png">
-    <div>Todo list</div>
-    <div>Calendar</div>
     <todo-list v-bind:todos="todos"></todo-list>
   </div>
 </template>

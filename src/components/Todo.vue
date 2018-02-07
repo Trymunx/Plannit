@@ -1,7 +1,7 @@
 <template>
   <div class="todo">
     <input type="checkbox" v-model="todo.done">
-    {{todo.title}}
+    <input type="text" v-model="todo.title">
   </div>
 </template>
 
