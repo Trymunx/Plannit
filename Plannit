@@ -8,3 +8,7 @@ Features:
   Dismiss functionality, especially if implementing push notifications
   Push notifications for todos
   Device sniffer, so can set tasks only for desktop/mobile/specific devices. Could just be a popup on startup for now
+  Have a habit tracker: eg "Eat fruit" and cumulative completion within timeframe gives increased rewards (exp?)
+  Have a time tracker by tracking start time and finish time of tasks:
+   - need 'started', 'complete', 'elapsedTime'
+   - in order to be useful when setting new tasks need to track types of todos
