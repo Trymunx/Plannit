@@ -1,13 +1,13 @@
 <template>
   <div id="app">
     <img src="./assets/Plannit.png">
-    <div>To do: {{incompleteTodosCount}} || Done: {{doneTodosCount}}</div>
+    <div>To do: {{incompleteTodos.length}} || Done: {{doneTodos.length}}</div>
     <todo-list v-bind:todos="todos"></todo-list>
   </div>
 </template>
 
 <script>
-import TodoList from "./components/TodoList";
+import TodoList from "@/components/TodoList";
 
 export default {
   name: "app",
@@ -15,35 +15,14 @@ export default {
     TodoList
   },
   computed: {
-    incompleteTodosCount() {
-      return this.$store.getters.incompleteTodosCount;
+    incompleteTodos() {
+      return this.$store.getters.incompleteTodos;
     },
-    doneTodosCount() {
-      return this.$store.getters.doneTodosCount;
+    doneTodos() {
+      return this.$store.getters.doneTodos;
     }
   },
-  data() {
-    return {
-      todos: [
-        {
-          title: "Todo A",
-          done: false
-        },
-        {
-          title: "Todo B",
-          done: false
-        },
-        {
-          title: "Todo C",
-          done: false
-        },
-        {
-          title: "Todo D",
-          done: false
-        }
-      ]
-    };
-  }
+  data() {}
 };
 </script>
 
