@@ -7,18 +7,22 @@ export default new Vuex.Store({
   state: {
     todos: [
       {
+        id: 0,
         title: "Todo A",
         done: false
       },
       {
+        id: 1,
         title: "Todo B",
         done: false
       },
       {
+        id: 2,
         title: "Todo C",
         done: false
       },
       {
+        id: 3,
         title: "Todo D",
         done: false
       }
@@ -28,7 +32,7 @@ export default new Vuex.Store({
     doneTodos: (state) => {
       return state.todos.filter(todo => todo.done)
     },
-    incompleteTodosCount: (state) => {
+    incompleteTodos: (state) => {
       return state.todos.filter(todo => !todo.done)
     }
   },
