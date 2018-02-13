@@ -1,23 +1,17 @@
 <template>
-  <div class="todo">
-    <input type="checkbox" @click="toggleComplete">
-    <input type="text" v-model="todo.title">
-    {{ todo.done }}
+  <div class="todo-item">
+    <input type="checkbox" @click="toggleComplete(todo)" :checked="todo.done">
+    <div>{{todo.title}}</div>
   </div>
 </template>
 
 <script type="text/javascript">
-import { addTodo, deleteTodo, toggleComplete } from "../vuex/actions";
+import { addTodo, deleteTodo, toggleComplete } from "@/vuex/actions";
 
 export default {
-  vuex: {
-    getters: {
-      activeTodo: state => state.activeTodo
-    },
-    actions: {
-      addTodo,
-      deleteTodo,
-      toggleComplete
+  methods: {
+    toggleComplete(todo) {
+      this.$store.dispatch("toggleComplete", todo);
     }
   },
   props: ["todo"]
@@ -25,11 +19,10 @@ export default {
 </script>
 
 <style scoped>
-.todo {
+.todo-item {
+  display: flex;
   padding: 5px;
   margin: 5px;
-  border-radius: 2px;
-  background-color: #dfdfdf;
-  width: 200px;
+  border-radius: 5px;
 }
 </style>
