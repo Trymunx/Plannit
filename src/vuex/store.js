@@ -18,24 +18,42 @@ export default new Vuex.Store({
       },
       {
         id: 2,
-        title: "Todo C",
+        title: "Todo C is a really long test todo that should overflow over a couple of lines or maybe some more let's see what we can do with it",
         done: false
       },
       {
         id: 3,
         title: "Todo D",
         done: false
+      },
+      {
+        id: 4,
+        title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus facilisis vel ex et gravida. Donec lacus neque, vestibulum non imperdiet sed, condimentum quis urna. Aliquam vestibulum nisl vel sem egestas malesuada.",
+        done: false
       }
     ]
   },
+
   getters: {
-    doneTodos: (state) => {
+    completeTodos: (state) => {
       return state.todos.filter(todo => todo.done)
     },
     incompleteTodos: (state) => {
       return state.todos.filter(todo => !todo.done)
     }
   },
+
+  actions: {
+    addTodo({ commit }) {
+      commit("ADD_TODO");
+    },
+
+    toggleComplete({ commit }, todo) {
+      commit("TOGGLE_COMPLETE", todo);
+    }
+  },
+
+
   mutations: {
     ADD_TODO(state) {
       const newTodo = {
@@ -46,42 +64,8 @@ export default new Vuex.Store({
       state.activeTodo = newTodo;
     },
 
-    EDIT_TODO(state, text) {
-      state.activeTodo.text = text;
-    },
-
-    DELETE_TODO(state) {
-      state.todos.$remove(state.activeTodo);
-      state.activeTodo = state.todos[0];
-    },
-
-    SET_ACTIVE_TODO(state, todo) {
-      state.activeTodo = todo;
-    },
-
-    TOGGLE_COMPLETE(state) {
-      state.activeTodo.done = !state.activeTodo.done;
-    }
-  },
-  actions: {
-    addTodo({ dispatch }) {
-      dispatch("ADD_TODO");
-    },
-
-    editTodo({ dispatch }) {
-      dispatch("EDIT_TODO", e.target.value);
-    },
-
-    deleteTodo({ dispatch }) {
-      dispatch("DELETE_TODO");
-    },
-
-    updateActiveTodo({ dispatch }) {
-      dispatch("SET_ACTIVE_TODO", todo);
-    },
-
-    toggleComplete({ dispatch }) {
-      dispatch("TOGGLE_COMPLETE");
+    TOGGLE_COMPLETE(state, todo) {
+      state.todos[todo.id].done = !state.todos[todo.id].done;
     }
   }
 })
