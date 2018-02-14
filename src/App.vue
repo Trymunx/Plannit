@@ -18,9 +18,9 @@ export default {
 </script>
 
 <style>
-body {
+/* body {
   overflow: hidden;
-}
+} */
 #app {
   margin: none;
   padding: 10px;
@@ -28,7 +28,7 @@ body {
   border-radius: 10px;
   border-width: 5px;
   border-color: grey;
-  height: fill-available;
+  /* height: fill-available; */
   font-family: sans-serif;
 }
 </style>
