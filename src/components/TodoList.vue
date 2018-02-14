@@ -4,7 +4,7 @@
       <div>To do: {{incompleteTodos.length}}</div>
       <div>Done: {{completeTodos.length}}</div>
     </div>
-    <input class="new-todo" placeholder="Add new todo">
+    <textarea class="new-todo" placeholder="Add new todo" v-model="todoText" @keyup.enter="addNewTodo"/>
     <todo 
       v-for="todo in incompleteTodos" 
       :key="todo.id" 
@@ -23,7 +23,19 @@
 import Todo from "./Todo";
 
 export default {
-  // props: ["todos"],
+  data() {
+    return {
+      todoText: ""
+    }
+  },
+  methods: {
+    addNewTodo() {
+      if (this.todoText !== "") {
+        this.$store.dispatch("addTodo", this.todoText);
+        this.todoText = "";
+      }
+    }
+  },
   components: {
     Todo
   },
@@ -62,12 +74,14 @@ export default {
 }
 
 .separator {
-  width: 90%;
+  width: 80%;
   margin-left: auto;
   margin-right: auto;
   border-color: #aeaeae;
   border-width: 0.5px;
   border-style: solid;
+  margin-top: 8px;
+  margin-bottom: 8px;
 }
 
 .new-todo {
@@ -84,6 +98,12 @@ export default {
   font-family: sans-serif;
   font-size: 1em;
 
+  overflow-wrap: break-word;
+  overflow-y: auto;
+  overflow: hidden;
+  resize: none;
+
+  /* + Icon */
   background-image: url("../assets/AddTodo.png");
   background-position: 5px 7px;
   background-size: 20px;

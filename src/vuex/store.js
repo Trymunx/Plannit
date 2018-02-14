@@ -44,8 +44,8 @@ export default new Vuex.Store({
   },
 
   actions: {
-    addTodo({ commit }) {
-      commit("ADD_TODO");
+    addTodo({ commit }, text) {
+      commit("ADD_TODO", text);
     },
 
     toggleComplete({ commit }, todo) {
@@ -55,13 +55,12 @@ export default new Vuex.Store({
 
 
   mutations: {
-    ADD_TODO(state) {
-      const newTodo = {
-        text: "What needs to be done?",
+    ADD_TODO(state, text) {
+      state.todos.push({
+        id: state.todos.length,
+        title: text,
         done: false
-      }
-      state.todos.push(newTodo);
-      state.activeTodo = newTodo;
+      });
     },
 
     TOGGLE_COMPLETE(state, todo) {
