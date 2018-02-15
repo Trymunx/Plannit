@@ -4,7 +4,7 @@
       <div>To do: {{incompleteTodos.length}}</div>
       <div>Done: {{completeTodos.length}}</div>
     </div>
-    <textarea class="new-todo" placeholder="Add new todo" v-model="todoText" @keyup.enter="addNewTodo"/>
+    <textarea class="new-todo" placeholder="Add new todo" v-model="todoText" @keypress.enter.prevent="addNewTodo"/>
     <todo 
       v-for="todo in incompleteTodos" 
       :key="todo.id" 
@@ -53,6 +53,8 @@ export default {
 <style>
 .todo-list {
   width: 250px;
+  max-height: 92vh;
+  overflow-y: auto;
   border: solid;
   border-width: 1px;
   border-radius: 8px;
@@ -86,6 +88,7 @@ export default {
 
 .new-todo {
   width: fill;
+  height: 1em;
   padding: 8px;
   margin: 5px 5px 10px;
   border: none;
