@@ -53,7 +53,7 @@ export default {
 <style>
 .todo-list {
   width: 250px;
-  max-height: 92vh;
+  max-height: 87vh;
   overflow-y: auto;
   border: solid;
   border-width: 1px;
@@ -108,7 +108,7 @@ export default {
 
   /* + Icon */
   background-image: url("../assets/AddTodo.png");
-  background-position: 5px 7px;
+  background-position: 5px 5px;
   background-size: 20px;
   background-repeat: no-repeat;
   padding-left: 30px;
