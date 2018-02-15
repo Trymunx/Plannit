@@ -1,34 +1,38 @@
 <template>
   <div id="app">
-    <img src="./assets/Plannit.png">
-    <todo-list></todo-list>
+    <app-header></app-header>
+    <app-contents>
+    </app-contents>
+    <!-- <app-footer></app-footer> -->
   </div>
 </template>
 
 <script>
-import TodoList from "@/components/TodoList";
+import AppHeader from "@/components/AppHeader";
+import AppContents from "@/components/AppContents";
 
 export default {
   name: "app",
   components: {
-    TodoList
+    AppHeader,
+    AppContents
   },
   computed: {}
 };
 </script>
 
 <style>
-/* body {
+body {
   overflow: hidden;
-} */
-#app {
+}
+/* #app {
   margin: none;
   padding: 10px;
   border: solid;
   border-radius: 10px;
   border-width: 5px;
   border-color: grey;
-  /* height: fill-available; */
+  height: fill-available;
   font-family: sans-serif;
-}
+} */
 </style>
