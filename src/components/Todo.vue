@@ -1,7 +1,8 @@
 <template>
-  <div class="todo-item">
+  <div class="todo-item" @mouseover="toggleDeleteButton" @mouseout="toggleDeleteButton">
     <input type="checkbox" @click="toggleComplete(todo)" :checked="todo.done">
     <div>{{todo.title}}</div>
+    <div class="delete-button" v-show="showDelete" @click="deleteTodo(todo)">X</div>
   </div>
 </template>
 
@@ -9,9 +10,22 @@
 import { addTodo, deleteTodo, toggleComplete } from "@/vuex/actions";
 
 export default {
+  data() {
+    return {
+      showDelete: false
+    }
+  },
   methods: {
     toggleComplete(todo) {
       this.$store.dispatch("toggleComplete", todo);
+    },
+
+    deleteTodo(todo) {
+      this.$store.dispatch("deleteTodo", todo);
+    },
+
+    toggleDeleteButton() {
+      this.showDelete = !this.showDelete;
     }
   },
   props: ["todo"]
@@ -25,5 +39,9 @@ export default {
   margin: 5px;
   border-radius: 5px;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.delete-button {
+  margin-left: auto;
 }
 </style>
