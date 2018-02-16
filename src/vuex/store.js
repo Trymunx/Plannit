@@ -48,6 +48,10 @@ export default new Vuex.Store({
       commit("ADD_TODO", text);
     },
 
+    deleteTodo({ commit }, todo) {
+      commit("DELETE_TODO", todo);
+    },
+
     toggleComplete({ commit }, todo) {
       commit("TOGGLE_COMPLETE", todo);
     }
@@ -61,6 +65,10 @@ export default new Vuex.Store({
         title: text,
         done: false
       });
+    },
+
+    DELETE_TODO(state, todo) {
+      state.todos.splice(todo.id, 1);
     },
 
     TOGGLE_COMPLETE(state, todo) {
