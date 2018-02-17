@@ -31,7 +31,8 @@ export default new Vuex.Store({
         title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus facilisis vel ex et gravida. Donec lacus neque, vestibulum non imperdiet sed, condimentum quis urna. Aliquam vestibulum nisl vel sem egestas malesuada.",
         done: false
       }
-    ]
+    ],
+    idCounter: 5
   },
 
   getters: {
@@ -61,18 +62,21 @@ export default new Vuex.Store({
   mutations: {
     ADD_TODO(state, text) {
       state.todos.push({
-        id: state.todos.length,
+        id: state.idCounter,
         title: text,
         done: false
       });
+      state.idCounter++;
     },
 
     DELETE_TODO(state, todo) {
-      state.todos.splice(todo.id, 1);
+      let key = state.todos.indexOf(todo);
+      state.todos.splice(key, 1);
     },
 
     TOGGLE_COMPLETE(state, todo) {
-      state.todos[todo.id].done = !state.todos[todo.id].done;
+      let key = state.todos.indexOf(todo);
+      state.todos[key].done = !state.todos[key].done;
     }
   }
 })
