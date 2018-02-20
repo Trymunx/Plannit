@@ -2,7 +2,8 @@
   <div class="todo-item" @mouseover="toggleDeleteButton" @mouseout="toggleDeleteButton">
     <input type="checkbox" @click="toggleComplete(todo)" :checked="todo.done">
     <div class="todo-title" @click="toggleDetails">{{todo.title}}</div>
-    <div class="delete-button" v-if="showDelete" @click="deleteTodo(todo)">X</div>
+    <!-- <div class="delete-button" v-if="showDelete" @click="deleteTodo(todo)">X</div> -->
+    <img class="delete-button" src="../assets/RubbishBin.png" v-if="showDelete" @click="deleteTodo(todo)"/>
     <div class="delete-space" v-else></div>
     <div class="todo-details" v-if="showDetails">
       <div class="start-button" v-if="!todo.started && !todo.done" @click="startTodo(todo)">Start</div>
@@ -74,7 +75,8 @@ export default {
 
 .delete-button {
   margin-left: auto;
-  width: 10px;
+  width: 20px;
+  height: 20px;
 }
 
 .delete-space {
