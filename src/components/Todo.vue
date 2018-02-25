@@ -22,7 +22,7 @@ export default {
     return {
       showDelete: false,
       showDetails: false
-    }
+    };
   },
   computed: {
     elapsedTime() {
@@ -65,7 +65,8 @@ export default {
   padding: 5px;
   margin: 5px;
   border-radius: 5px;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
 .todo-title {
