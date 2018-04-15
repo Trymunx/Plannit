@@ -5,7 +5,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    todos: [
+    incompleteTodos: [
       {
         id: 0,
         title: "Todo A",
@@ -42,15 +42,16 @@ export default new Vuex.Store({
         finished: false
       }
     ],
+    completeTodos: [],
     idCounter: 5
   },
 
   getters: {
     completeTodos: (state) => {
-      return state.todos.filter(todo => todo.done)
+      return state.completeTodos;
     },
     incompleteTodos: (state) => {
-      return state.todos.filter(todo => !todo.done)
+      return state.incompleteTodos;
     }
   },
 
@@ -60,28 +61,44 @@ export default new Vuex.Store({
     },
 
     deleteTodo({ commit }, todo) {
-      commit("DELETE_TODO", todo);
+      if (!todo.done) {
+        commit("DELETE_INCOMPLETE_TODO", todo);
+      } else {
+        commit("DELETE_COMPLETE_TODO", todo);
+      }
     },
 
     toggleComplete({ commit }, todo) {
-      if (!todo.done) commit("FINISH_TODO", todo);
-      else commit("START_TODO", todo);
-      commit("TOGGLE_COMPLETE", todo);
+      if (!todo.done) {
+        // commit("FINISH_TODO", todo);
+        commit("COMPLETE_TODO", todo);
+      } else {
+        // commit("START_TODO", todo);
+        commit("UNDO_COMPLETE_TODO", todo);
+      }
     },
 
-    startTodo({commit}, todo) {
+    startTodo({ commit }, todo) {
       commit("START_TODO", todo);
     },
 
-    finishTodo({commit}, todo) {
+    finishTodo({ commit }, todo) {
       commit("FINISH_TODO", todo);
+    },
+
+    updateIncompleteList({ commit }, value) {
+      commit("UPDATE_INCOMPLETE_LIST", value);
+    },
+
+    updateCompleteList({ commit }, value) {
+      commit("UPDATE_COMPLETE_LIST", value);
     }
   },
 
 
   mutations: {
     ADD_TODO(state, text) {
-      state.todos.push({
+      state.incompleteTodos.push({
         id: state.idCounter,
         title: text,
         done: false,
@@ -91,24 +108,46 @@ export default new Vuex.Store({
       state.idCounter++;
     },
 
-    DELETE_TODO(state, todo) {
-      let index = state.todos.indexOf(todo);
-      state.todos.splice(index, 1);
+    DELETE_INCOMPLETE_TODO(state, todo) {
+      let index = state.incompleteTodos.indexOf(todo);
+      state.incompleteTodos.splice(index, 1);
     },
 
-    TOGGLE_COMPLETE(state, todo) {
-      let index = state.todos.indexOf(todo);
-      state.todos[index].done = !state.todos[index].done;
+    DELETE_COMPLETE_TODO(state, todo) {
+      let index = state.completeTodos.indexOf(todo);
+      state.completeTodos.splice(index, 1);
+    },
+
+    COMPLETE_TODO(state, todo) {
+      let index = state.incompleteTodos.indexOf(todo);
+      state.incompleteTodos.splice(index, 1);
+      todo.done = true;
+      state.completeTodos.push(todo);
+    },
+
+    UNDO_COMPLETE_TODO(state, todo) {
+      let index = state.completeTodos.indexOf(todo);
+      state.completeTodos.splice(index, 1);
+      todo.done = false;
+      state.incompleteTodos.push(todo);
     },
 
     START_TODO(state, todo) {
-      let index = state.todos.indexOf(todo);
-      state.todos[index].started = new Date();
+      let index = state.incompleteTodos.indexOf(todo);
+      state.incompleTodos[index].started = new Date();
     },
 
     FINISH_TODO(state, todo) {
-      let index = state.todos.indexOf(todo);
-      state.todos[index].finished = new Date();
+      let index = state.incompleteTodos.indexOf(todo);
+      state.incompleteTodos[index].finished = new Date();
+    },
+
+    UPDATE_INCOMPLETE_LIST(state, value) {
+      state.incompleteTodos = value;
+    },
+
+    UPDATE_COMPLETE_LIST(state, value) {
+      state.completeTodos = value;
     }
   }
 })

@@ -5,28 +5,33 @@
       <div>Done: {{completeTodos.length}}</div>
     </div>
     <textarea class="new-todo" placeholder="Add new todo" v-model="todoText" @keypress.enter.prevent="addNewTodo"/>
-    <todo 
-      v-for="todo in incompleteTodos" 
-      :key="todo.id" 
-      :todo="todo" 
-      class="incomplete"/>
-    <hr class="separator" v-show="incompleteTodos.length !== 0 && completeTodos.length !== 0">
-    <todo 
-      v-for="todo in completeTodos" 
-      :key="todo.id" 
-      :todo="todo" 
-      class="complete"/>
+    <draggable v-model="incompleteTodos">
+      <todo 
+        v-for="todo in incompleteTodos" 
+        :key="todo.id" 
+        :todo="todo" 
+        class="incomplete"/>
+      <hr class="separator" v-show="incompleteTodos.length !== 0 && completeTodos.length !== 0">
+    </draggable> 
+    <draggable v-model="completeTodos">
+      <todo 
+        v-for="todo in completeTodos" 
+        :key="todo.id" 
+        :todo="todo" 
+        class="complete"/>
+    </draggable>
   </div>
 </template>
 
 <script type="text/javascript">
 import Todo from "./Todo";
+import draggable from "vuedraggable";
 
 export default {
   data() {
     return {
       todoText: ""
-    }
+    };
   },
   methods: {
     addNewTodo() {
@@ -37,15 +42,32 @@ export default {
     }
   },
   components: {
-    Todo
+    Todo,
+    draggable
   },
   computed: {
-    incompleteTodos() {
-      return this.$store.getters.incompleteTodos;
+    incompleteTodos: {
+      get() {
+        return this.$store.getters.incompleteTodos;
+      },
+      set(value) {
+        this.$store.dispatch("updateIncompleteList", value);
+      }
     },
-    completeTodos() {
-      return this.$store.getters.completeTodos;
+    completeTodos: {
+      get() {
+        return this.$store.getters.completeTodos;
+      },
+      set(value) {
+        this.$store.dispatch("updateCompleteList", value);
+      }
     }
+    // incompleteTodos() {
+    //   return this.$store.getters.incompleteTodos;
+    // },
+    // completeTodos() {
+    //   return this.$store.getters.completeTodos;
+    // }
   }
 };
 </script>
