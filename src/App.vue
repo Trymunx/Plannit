@@ -1,8 +1,9 @@
 <template>
   <div id="app">
-    <app-header></app-header>
+    <login-window></login-window>
+    <!-- <app-header></app-header>
     <app-contents>
-    </app-contents>
+    </app-contents> -->
     <!-- <app-footer></app-footer> -->
   </div>
 </template>
@@ -10,12 +11,14 @@
 <script>
 import AppHeader from "@/components/AppHeader";
 import AppContents from "@/components/AppContents";
+import LoginWindow from "@/components/LoginWindow";
 
 export default {
   name: "app",
   components: {
     AppHeader,
-    AppContents
+    AppContents,
+    LoginWindow
   },
   computed: {}
 };
