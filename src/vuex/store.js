@@ -43,7 +43,8 @@ export default new Vuex.Store({
       }
     ],
     completeTodos: [],
-    idCounter: 5
+    idCounter: 5,
+    addToTop: true
   },
 
   getters: {
@@ -98,14 +99,18 @@ export default new Vuex.Store({
 
   mutations: {
     ADD_TODO(state, text) {
-      state.incompleteTodos.push({
-        id: state.idCounter,
+      let todo = {
+        id: state.idCounter++,
         title: text,
         done: false,
         started: 0,
         finished: 0
-      });
-      state.idCounter++;
+      };
+      if (state.addToTop) {
+        state.incompleteTodos.unshift(todo);
+      } else {
+        state.incompleteTodos.push(todo);
+      }
     },
 
     DELETE_INCOMPLETE_TODO(state, todo) {
