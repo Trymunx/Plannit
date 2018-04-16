@@ -59,6 +59,7 @@ export default new Vuex.Store({
   actions: {
     addTodo({ commit }, text) {
       commit("ADD_TODO", text);
+      commit("INCREMENT_INDEXES");
     },
 
     deleteTodo({ commit }, todo) {
@@ -127,14 +128,19 @@ export default new Vuex.Store({
       let index = state.incompleteTodos.indexOf(todo);
       state.incompleteTodos.splice(index, 1);
       todo.done = true;
-      state.completeTodos.push(todo);
+      todo.prevIndex = index;
+      state.completeTodos.unshift(todo);
     },
 
     UNDO_COMPLETE_TODO(state, todo) {
       let index = state.completeTodos.indexOf(todo);
       state.completeTodos.splice(index, 1);
       todo.done = false;
-      state.incompleteTodos.push(todo);
+      state.incompleteTodos.splice(todo.prevIndex, 0, todo);
+    },
+
+    INCREMENT_INDEXES(state) {
+      state.completeTodos.forEach(todo => todo.prevIndex++);
     },
 
     START_TODO(state, todo) {
