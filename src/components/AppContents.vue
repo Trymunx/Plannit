@@ -12,18 +12,17 @@ export default {
   components: {
     TodoList
   }
-}
+};
 </script>
 
 <style>
 .app-contents {
   display: flex;
-  justify-content: center;
+  justify-content: left;
   width: 100%;
   margin: 5px;
   padding: 10px;
   border: none;
 }
-
 </style>
 

@@ -1,6 +1,7 @@
 <template>
-  <div class="todo-item" @mouseover="toggleDeleteButton" @mouseout="toggleDeleteButton">
-    <input type="checkbox" @click="toggleComplete(todo)" :checked="todo.done">
+  <div class="todo-item">
+  <!-- <div class="todo-item" @mouseover="toggleDeleteButton" @mouseout="toggleDeleteButton"> -->
+    <input type="checkbox" class="checkbox" @click="toggleComplete(todo)" :checked="todo.done">
     <div class="todo-title" @click="toggleDetails">{{todo.title}}</div>
     <!-- <div class="delete-button" v-if="showDelete" @click="deleteTodo(todo)">X</div> -->
     <img class="delete-button" src="../assets/RubbishBin.png" v-if="showDelete" @click="deleteTodo(todo)"/>
@@ -64,7 +65,7 @@ export default {
   flex-wrap: wrap;
   padding: 5px;
   margin: 5px;
-  border-radius: 5px;
+  border-radius: 2px;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
@@ -82,5 +83,15 @@ export default {
 
 .delete-space {
   width: 10px;
+}
+
+.checkbox {
+  height: 20px;
+  width: 20px;
+  background-color: #eee;
+}
+
+.checkbox:hover {
+  background-color: #ccc;
 }
 </style>

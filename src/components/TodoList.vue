@@ -74,12 +74,10 @@ export default {
 
 <style>
 .todo-list {
-  width: 250px;
+  width: 340px;
   max-height: 87vh;
   overflow-y: auto;
-  border: solid;
-  border-width: 1px;
-  border-radius: 8px;
+  border-right: solid 1px #bbb;
   padding: 10px;
 }
 .list-header {
@@ -90,11 +88,11 @@ export default {
 .complete {
   text-decoration: line-through;
   color: grey;
-  background-color: #dfdfdf;
+  background-color: #efefef;
 }
 
 .incomplete {
-  background-color: #dcf5da;
+  background-color: #fff;
 }
 
 .separator {
