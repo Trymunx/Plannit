@@ -5,6 +5,9 @@
         <img class="logo" src="../assets/Plannit.png">
         <span class="app-title">Plannit</span>
       </div>
+      <form class="login-form">
+        <input type="email" placeholder="Email" class="login-input">
+      </form>
     </div>
   </div>
 </template>
@@ -38,11 +41,15 @@ export default {};
   box-shadow: 0px 3px 15px #a3a3a3;
 
   padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .login-header {
   display: flex;
   justify-content: center;
+  margin-bottom: 50px;
 }
 
 .app-title {
@@ -58,5 +65,26 @@ export default {};
 
 .logo {
   height: 60px;
+}
+
+.login-form {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  margin: 10px;
+  margin-bottom: auto;
+}
+
+.login-input {
+  border: none;
+  border-bottom: solid 2px #dfdfdf;
+  width: 80%;
+  height: 30px;
+  transition: border linear 200ms;
+}
+
+.login-input:focus {
+  outline: none;
+  border-bottom: solid 2px #317bdb;
 }
 </style>
