@@ -2,7 +2,7 @@
   <div id="login-page">
     <div id="login-dialogue">
       <div class="login-header">
-        <img class="logo" src="../assets/Plannit.png">
+        <img class="logo" src="../../assets/Plannit.png">
         <span class="app-title">Plannit</span>
       </div>
       <form class="login-form">
@@ -31,6 +31,8 @@ export default {};
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 0px;
+  margin: 0px;
 }
 
 #login-dialogue {

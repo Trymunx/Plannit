@@ -4,6 +4,7 @@ import Vue from "vue";
 import App from "./App";
 import Vuex from "vuex";
 import store from "@/vuex/store";
+import router from "@/router/router";
 import * as firebase from "firebase";
 
 Vue.config.productionTip = false;
@@ -24,6 +25,7 @@ firebase.initializeApp(config);
 new Vue({
   el: "#app",
   store,
+  router,
   template: "<App/>",
   components: { App }
 });

@@ -1,6 +1,6 @@
 <template>
   <div class="app-header">
-    <img class="logo" src="../assets/Plannit.png">
+    <img class="logo" src="../../assets/Plannit.png">
     <div class="app-title">Plannit</div>
   </div>
 </template>
@@ -17,8 +17,10 @@ export default {
   justify-content: left;
   height:60px;
   width: 100%;
+  padding: 10px;
   border: none;
   border-bottom: 1px solid grey;
+  box-shadow: 0px -1px 8px 2px grey;
 }
 
 .app-header {

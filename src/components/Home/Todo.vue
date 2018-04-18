@@ -4,7 +4,7 @@
     <input type="checkbox" class="checkbox" @click="toggleComplete(todo)" :checked="todo.done">
     <div class="todo-title" @click="toggleDetails">{{todo.title}}</div>
     <!-- <div class="delete-button" v-if="showDelete" @click="deleteTodo(todo)">X</div> -->
-    <img class="delete-button" src="../assets/RubbishBin.png" v-if="showDelete" @click="deleteTodo(todo)"/>
+    <img class="delete-button" src="@/assets/RubbishBin.png" v-if="showDelete" @click="deleteTodo(todo)"/>
     <div class="delete-space" v-else></div>
     <div class="todo-details" v-if="showDetails">
       <div class="start-button" v-if="!todo.started && !todo.done" @click="startTodo(todo)">Start</div>

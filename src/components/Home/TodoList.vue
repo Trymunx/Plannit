@@ -127,7 +127,7 @@ export default {
   resize: none;
 
   /* + Icon */
-  background-image: url("../assets/AddTodo.png");
+  background-image: url("../../assets/AddTodo.png");
   background-position: 5px 5px;
   background-size: 20px;
   background-repeat: no-repeat;
