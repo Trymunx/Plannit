@@ -5,18 +5,54 @@
         <img class="logo" src="../../assets/Plannit.png">
         <span class="app-title">Plannit</span>
       </div>
-      <form class="login-form">
-        <input name="email" id="login-email" type="email" autocomplete="email" placeholder="Email address" spellcheck="false" class="login-input">
-        <input name="password" id="login-password" type="password" autocomplete="current-password" class="login-input" placeholder="Password">
+      <form class="login-form" @submit.prevent>
+        <input name="email" v-model="email" id="login-email" type="email" autocomplete="email" placeholder="Email address" spellcheck="false" class="login-input">
+        <input name="password" v-model="password" id="login-password" type="password" autocomplete="current-password" class="login-input" placeholder="Password">
         <a href="https:google.com/search?q=Define+unlucky" id="forgot-password">Forgotten your password?</a>
-        <input type="submit" value="Login" class="login-button">
+        <input type="submit" value="Login" class="login-button" @click="signIn">
       </form>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+import firebase from "firebase";
+// import firebaseUI from "firebaseui";
+
+// export default {
+//   created() {
+//     var uiConfig = {
+//       signInOptions: [
+//         firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+//         firebase.auth.EmailAuthProvider.PROVIDER_ID
+//       ]
+//     }
+//     var ui = new firebaseui.auth.AuthUI(firebase.auth());
+//     ui.start("#firebaseui-auth-container", uiConfig);
+//   }
+// };
+export default {
+  data() {
+    return {
+      email: "",
+      password: ""
+    }
+  },
+  methods: {
+    signIn() {
+      firebase.auth().signInWithEmailAndPassword(this.email, this.password)
+        .then(
+          user => {
+            this.$store.dispatch("setUser", user);
+            this.$router.replace("/");
+          },
+          error => {
+            alert(error.message);
+          });
+    }
+  }
+}
+
 </script>
 
 <style scoped>
@@ -95,7 +131,7 @@ export default {};
   width: 80%;
   height: 30px;
   padding: 0px 10px;
-  margin: 5px;
+  margin: 8px;
   transition: border linear 200ms;
 }
 

@@ -1,6 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import store from "@/vuex/store";
+import firebase from "firebase";
 // Components:
 import loginPage from "@/components/Login/LoginWindow";
 import AppPage from "@/components/Home/AppPage";
@@ -14,7 +14,7 @@ export default new VueRouter({
       name: "App",
       component: AppPage,
       beforeEnter: (to, from, next) => {
-        if (!store.state.authorised) {
+        if (!firebase.auth().currentUser) {
           next("/login");
         } else {
           next();
@@ -26,7 +26,7 @@ export default new VueRouter({
       name: "Login",
       component: loginPage,
       beforeEnter: (to, from, next) => {
-        if (store.state.authorised) {
+        if (firebase.auth().currentUser) {
           next("/");
         } else {
           next();

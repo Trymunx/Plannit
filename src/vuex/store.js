@@ -1,11 +1,12 @@
-import Vue from "vue"
-import Vuex from "vuex"
+import Vue from "vue";
+import Vuex from "vuex";
+import firebase from "firebase";
+import router from "vue-router";
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    authorised: false,
     incompleteTodos: [
       {
         id: 0,
@@ -49,12 +50,9 @@ export default new Vuex.Store({
   },
 
   getters: {
-    completeTodos: (state) => {
-      return state.completeTodos;
-    },
-    incompleteTodos: (state) => {
-      return state.incompleteTodos;
-    }
+    completeTodos: state => state.completeTodos,
+    incompleteTodos: state => state.incompleteTodos,
+    currentUser: state => state.user
   },
 
   actions: {
@@ -95,6 +93,10 @@ export default new Vuex.Store({
 
     updateCompleteList({ commit }, value) {
       commit("UPDATE_COMPLETE_LIST", value);
+    },
+
+    setUser({ commit }) {
+      commit("SET_USER");
     }
   },
 
@@ -160,6 +162,10 @@ export default new Vuex.Store({
 
     UPDATE_COMPLETE_LIST(state, value) {
       state.completeTodos = value;
+    },
+
+    SET_USER(state) {
+      state.user = firebase.auth().currentUser;
     }
   }
-})
+});
