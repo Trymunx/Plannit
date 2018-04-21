@@ -78,7 +78,7 @@ export default {
   max-height: 87vh;
   overflow-y: auto;
   border-right: solid 1px #bbb;
-  padding: 10px;
+  padding: 20px;
 }
 .list-header {
   display: flex;
