@@ -5,21 +5,20 @@
         <img class="logo" src="../../assets/Plannit.png">
         <span class="app-title">Plannit</span>
       </div>
-      <form class="login-form" @submit.prevent>
-        <input name="email" v-model="email" id="login-email" type="email" autocomplete="email" placeholder="Email address" spellcheck="false" class="login-input">
-        <input name="password" v-model="password" id="login-password" type="password" autocomplete="current-password" class="login-input" placeholder="Password">
-        <a href="https:google.com/search?q=Define+unlucky" id="forgot-password">Forgotten your password?</a>
-        <input type="submit" value="Login" class="login-button" @click="signIn">
-      </form>
+      <login-form v-if='loginWindowDisplay === "loginForm"'></login-form>
+      <forgot-password v-else-if='loginWindowDisplay === "forgotPassword"'></forgot-password>
+      <signup-form v-else-if="loginWindowDisplay == 'signUp'"></signup-form>
     </div>
   </div>
 </template>
 
 <script>
 import firebase from "firebase";
+import LoginForm from "@/components/Login/LoginForm";
+import SignupForm from "@/components/Login/SignupForm";
+import ForgotPassword from "@/components/Login/ForgotPassword";
 // import firebaseUI from "firebaseui";
 
-// export default {
 //   created() {
 //     var uiConfig = {
 //       signInOptions: [
@@ -32,45 +31,30 @@ import firebase from "firebase";
 //   }
 // };
 export default {
-  data() {
-    return {
-      email: "",
-      password: ""
-    }
+  components: {
+    LoginForm,
+    SignupForm,
+    ForgotPassword
   },
-  methods: {
-    signIn() {
-      firebase.auth().signInWithEmailAndPassword(this.email, this.password)
-        .then(
-          user => {
-            this.$store.dispatch("setUser", user);
-            this.$router.replace("/");
-          },
-          error => {
-            alert(error.message);
-          });
+  computed: {
+    loginWindowDisplay() {
+      return this.$store.getters.loginWindowDisplay;
     }
   }
 }
 
 </script>
 
-<style scoped>
+<style>
 .app-title {
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   font-size: 2.2em;
-  color: #404242;
+  color: #5b6670;
   padding: 10px;
   margin-left: 15px;
   margin-right: 50px;
   padding-top: 14px;
-}
-
-#forgot-password {
-  margin: 10px;
-  font-size: 0.8em;
-  color: #8da7c9;
 }
 
 #login-page {
@@ -115,7 +99,7 @@ export default {
   height: 60px;
 }
 
-.login-form {
+form {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -123,6 +107,20 @@ export default {
   padding: 10px;
   margin: 10px;
   margin-bottom: auto;
+}
+
+h2 {
+  font-size: 1.6em;
+  font-weight: normal;
+  color: #626e7a;
+  margin-bottom: 25px;
+}
+
+h3 {
+  font-size: 1.2em;
+  font-weight: normal;
+  color: #626e7a;
+  margin-bottom: 25px;
 }
 
 .login-input {
@@ -135,15 +133,29 @@ export default {
   transition: border linear 200ms;
 }
 
-.login-button {
-  width: 80px;
+.buttons-container {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.form-button {
+  width: 100px;
   height: 40px;
   margin: 20px;
-  background-color: #317bdb;
   border: none;
-  color: #f5f5f5;
-  font-family: sans-serif;
+  border-radius: 2px;
   font-size: 1.2em;
+}
+
+.login-button {
+  color: #f5f5f5;
+  background-color: #317bdb;
+}
+
+.cancel-button {
+  color: #f5f5f5;
+  background-color: #a3a3a3;
 }
 
 .login-input:focus {

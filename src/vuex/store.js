@@ -46,13 +46,15 @@ export default new Vuex.Store({
     ],
     completeTodos: [],
     idCounter: 5,
-    addToTop: true
+    addToTop: true,
+    loginWindowDisplay: "loginForm"
   },
 
   getters: {
     completeTodos: state => state.completeTodos,
     incompleteTodos: state => state.incompleteTodos,
-    currentUser: state => state.user
+    currentUser: state => state.user,
+    loginWindowDisplay: state => state.loginWindowDisplay
   },
 
   actions: {
@@ -93,6 +95,18 @@ export default new Vuex.Store({
 
     updateCompleteList({ commit }, value) {
       commit("UPDATE_COMPLETE_LIST", value);
+    },
+
+    showForgotPassword({ commit }) {
+      commit("SHOW_FORGOT_PASSWORD");
+    },
+
+    showLoginForm({ commit }) {
+      commit("SHOW_LOGIN_FORM");
+    },
+
+    showSignupForm({ commit }) {
+      commit("SHOW_SIGNUP_FORM");
     },
 
     setUser({ commit }) {
@@ -162,6 +176,18 @@ export default new Vuex.Store({
 
     UPDATE_COMPLETE_LIST(state, value) {
       state.completeTodos = value;
+    },
+
+    SHOW_FORGOT_PASSWORD(state) {
+      state.loginWindowDisplay = "forgotPassword";
+    },
+
+    SHOW_LOGIN_FORM(state) {
+      state.loginWindowDisplay = "loginForm";
+    },
+
+    SHOW_SIGNUP_FORM(state) {
+      state.loginWindowDisplay = "signUp";
     },
 
     SET_USER(state) {
