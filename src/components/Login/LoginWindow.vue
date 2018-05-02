@@ -5,8 +5,8 @@
         <img class="logo" src="../../assets/Plannit.png">
         <span class="app-title">Plannit</span>
       </div>
-      <login-form v-if='loginWindowDisplay === "loginForm"'></login-form>
-      <forgot-password v-else-if='loginWindowDisplay === "forgotPassword"'></forgot-password>
+      <login-form v-if="loginWindowDisplay === 'loginForm'"></login-form>
+      <forgot-password v-else-if="loginWindowDisplay === 'forgotPassword'"></forgot-password>
       <signup-form v-else-if="loginWindowDisplay == 'signUp'"></signup-form>
     </div>
   </div>

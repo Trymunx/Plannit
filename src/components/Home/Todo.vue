@@ -1,16 +1,19 @@
 <template>
   <div class="todo-item">
-  <!-- <div class="todo-item" @mouseover="toggleDeleteButton" @mouseout="toggleDeleteButton"> -->
     <input type="checkbox" class="checkbox" @click="toggleComplete(todo)" :checked="todo.done">
-    <div class="todo-title" @click="toggleDetails">{{todo.title}}</div>
-    <!-- <div class="delete-button" v-if="showDelete" @click="deleteTodo(todo)">X</div> -->
-    <img class="delete-button" src="@/assets/RubbishBin.png" v-if="showDelete" @click="deleteTodo(todo)"/>
-    <div class="delete-space" v-else></div>
-    <div class="todo-details" v-if="showDetails">
+    <div>
+      <!-- <textarea v-model="todo.title" class="todo-text"></textarea> -->
+      <!-- <div class="todo-text" contenteditable="true" :content="editText"></div> -->
+      <div class="todo-text" contenteditable="true">{{todo.title}}</div>
+      <div class="todo-title">{{todo.title}}</div>
+    </div>
+    <!-- <img class="delete-button" src="@/assets/RubbishBin.png" v-if="showDelete" @click="deleteTodo(todo)"/> -->
+    <!-- <div class="delete-space" v-else></div> -->
+    <!-- <div class="todo-details" v-if="showDetails">
       <div class="start-button" v-if="!todo.started && !todo.done" @click="startTodo(todo)">Start</div>
       <div class="status-bar" v-if="todo.started && !todo.done">Started</div>
       <div class="status-bar" v-if="todo.started && todo.done">{{elapsedTime}}</div>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -21,13 +24,17 @@ import Duration from "duration-js";
 export default {
   data() {
     return {
-      showDelete: false,
-      showDetails: false
+      // showDelete: false,
+      // showDetails: false
     };
   },
   computed: {
     elapsedTime() {
       return new Duration(this.todo.finished - this.todo.started).toString();
+    },
+    editText(text) {
+      console.log(text);
+      // this.todo.title = text;
     }
   },
   methods: {
@@ -73,6 +80,16 @@ export default {
 .todo-title {
   flex: 1;
   min-width: 200px;
+  outline: none;
+}
+
+.todo-text {
+  position: relative;
+  background-color: #fff0;
+  outline: none;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
 }
 
 .delete-button {

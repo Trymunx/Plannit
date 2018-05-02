@@ -2,13 +2,11 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from "vue";
 import App from "./App";
-import Vuex from "vuex";
 import store from "@/vuex/store";
 import router from "@/router/router";
 import * as firebase from "firebase";
 
 Vue.config.productionTip = false;
-Vue.use(Vuex);
 
 // Initialize Firebase
 const config = {
@@ -21,11 +19,21 @@ const config = {
 };
 firebase.initializeApp(config);
 
-/* eslint-disable no-new */
-new Vue({
-  el: "#app",
-  store,
-  router,
-  template: "<App/>",
-  components: { App }
+let app;
+firebase.auth().onAuthStateChanged(user => {
+  if (!app) {
+    /* eslint-disable no-new */
+    app = new Vue({
+      el: "#app",
+      store,
+      router,
+      template: "<App/>",
+      components: { App }
+    });
+  }
+  if (user) {
+    router.replace("/");
+  } else {
+    router.replace("/login");
+  }
 });

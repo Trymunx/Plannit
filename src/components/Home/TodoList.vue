@@ -94,6 +94,9 @@ export default {
 .incomplete {
   background-color: #fff;
 }
+.incomplete:hover {
+  background-color: #efefef;
+}
 
 .separator {
   width: 80%;

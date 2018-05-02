@@ -26,8 +26,8 @@ export default {
       firebase.auth().signInWithEmailAndPassword(this.email, this.password)
         .then(
           user => {
-            this.$store.dispatch("setUser", user);
-            this.$router.replace("/");
+            // this.$store.dispatch("setUser", user);
+            // this.$router.replace("/");
           },
           error => {
             alert(error.message);
