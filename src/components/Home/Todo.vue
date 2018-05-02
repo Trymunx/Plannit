@@ -1,5 +1,6 @@
 <template>
   <div class="todo-item">
+    <span class="handle">::</span>
     <input type="checkbox" class="checkbox" @click="toggleComplete(todo)" :checked="todo.done">
     <div>
       <!-- <textarea v-model="todo.title" class="todo-text"></textarea> -->
@@ -81,6 +82,12 @@ export default {
   flex: 1;
   min-width: 200px;
   outline: none;
+}
+
+.handle {
+  margin: 4px;
+  cursor: move;
+  color: #5f5f5f;
 }
 
 .todo-text {

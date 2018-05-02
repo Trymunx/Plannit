@@ -41,8 +41,7 @@ export default {
       return this.$store.getters.loginWindowDisplay;
     }
   }
-}
-
+};
 </script>
 
 <style>
@@ -93,7 +92,6 @@ export default {
   justify-content: center;
   margin-bottom: 80px;
 }
-
 
 .logo {
   height: 60px;

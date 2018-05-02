@@ -5,7 +5,7 @@
       <div>Done: {{completeTodos.length}}</div>
     </div>
     <textarea class="new-todo" placeholder="Add new todo" v-model="todoText" @keypress.enter.prevent="addNewTodo"/>
-    <draggable v-model="incompleteTodos">
+    <draggable v-model="incompleteTodos" :options="{handle:'.handle'}">
       <todo 
         v-for="todo in incompleteTodos" 
         :key="todo.id" 
