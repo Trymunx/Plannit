@@ -31,12 +31,17 @@ export default {
   border: none;
   border-bottom: 1px solid grey;
   box-shadow: 0px -1px 8px 2px grey;
+  background-color: #347a2f;
 }
 
 .app-title {
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  display: flex;
+  align-items: center;
+  margin: 0px 20px;
+  font-family: 'Nunito';
   font-size: 2em;
-  color: #3e3e3e;
+  /* color: #3e3e3e; */
+  color: #f5f5f5;
 }
 
 .logo {
