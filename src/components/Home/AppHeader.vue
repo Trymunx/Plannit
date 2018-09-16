@@ -26,7 +26,8 @@ export default {
 .app-header {
   display: flex;
   justify-content: left;
-  height:60px;
+  align-items: center;
+  height: 25px;
   padding: 10px;
   border: none;
   border-bottom: 1px solid grey;
@@ -45,10 +46,12 @@ export default {
 }
 
 .logo {
-  height: 60px;
+  height: 30px;
 }
 
 .logout-button {
+  display: flex;
+  align-items: center;
   margin: 5px;
   margin-left: auto;
   padding: 5px 12px;
@@ -56,8 +59,14 @@ export default {
   border: none;
   border-radius: 3px;
   color: #f5f5f5;
+  font-weight: bold;
   font-family: sans-serif;
   font-size: 1em;
+}
+
+.logout-button:hover {
+  cursor: pointer;
+  content: "Logging Out";
 }
 </style>
 
