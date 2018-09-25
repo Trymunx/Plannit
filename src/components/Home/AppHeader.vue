@@ -62,6 +62,13 @@ export default {
   font-weight: bold;
   font-family: sans-serif;
   font-size: 1em;
+
+  /* Icon */
+  background-image: url("../../assets/SignOut.png");
+  background-position: 80px 5px;
+  background-size: 20px;
+  background-repeat: no-repeat;
+  padding-right: 30px;
 }
 
 .logout-button:hover {
